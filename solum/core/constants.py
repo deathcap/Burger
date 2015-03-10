@@ -138,8 +138,7 @@ class ConstantPool(object):
                     tmp = ConstantField(tag, index, name, type_name, of_type)
                 elif tag == ConstantType.INTERFACE:
                     args, returns = method_descriptor(descriptor)
-                    tmp = ConstantInterface(tag, index, name, type_name, args,
-                        returns)
+                    tmp = ConstantInterface(tag, index, name, type_name, args) #, returns) # TODO: ?
             else:
                 raise RuntimeError('Invalid constant type.')
 
