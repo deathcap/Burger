@@ -39,7 +39,7 @@ def identify(cf):
     # We'll look for one of the debugging messages.
     const = cf.constants.find_one(
         ConstantType.STRING,
-        lambda c: "when adding" in c["string"]["value"]
+        lambda c: "when adding" in c.value
     )
 
     if const:
@@ -49,7 +49,7 @@ def identify(cf):
     # Next up, see if we've got the packet superclass in the same way.
     const = cf.constants.find_one(
         ConstantType.STRING,
-        lambda c: "Duplicate packet" in c["string"]["value"]
+        lambda c: "Duplicate packet" in c.value
     )
 
     if const:
@@ -59,7 +59,7 @@ def identify(cf):
     # The main recipe superclass.
     const = cf.constants.find_one(
         ConstantType.STRING,
-        lambda c: "X#X" in c["string"]["value"]
+        lambda c: "X#X" in c.value
     )
 
     if const:
@@ -68,8 +68,8 @@ def identify(cf):
     # Item superclass
     const = cf.constants.find_one(
        ConstantType.STRING,
-       lambda c: ("crafting results" in c["string"]["value"] or
-                  "CONFLICT @ " in c["string"]["value"])
+       lambda c: ("crafting results" in c.value or
+                  "CONFLICT @ " in c.value)
     )
 
     if const:
@@ -78,7 +78,7 @@ def identify(cf):
     # Entity list
     const = cf.constants.find_one(
         ConstantType.STRING,
-        lambda c: "Skipping Entity with id " in c["string"]["value"]
+        lambda c: "Skipping Entity with id " in c.value
     )
 
     if const:
@@ -87,7 +87,7 @@ def identify(cf):
     # Protocol version (Client)
     const = cf.constants.find_one(
         ConstantType.STRING,
-        lambda c: "disconnect.loginFailedInfo" in c["string"]["value"]
+        lambda c: "disconnect.loginFailedInfo" in c.value
     )
 
     if const:
@@ -96,7 +96,7 @@ def identify(cf):
     # Protocol version (Server)
     const = cf.constants.find_one(
         ConstantType.STRING,
-        lambda c: "Outdated client!" in c["string"]["value"]
+        lambda c: "Outdated client!" in c.value
     )
 
     if const:
@@ -105,7 +105,7 @@ def identify(cf):
     # Biome
     const = cf.constants.find_one(
         ConstantType.STRING,
-        lambda c: ("Plains") in c["string"]["value"]
+        lambda c: ("Plains") in c.value
     )
 
     if const:
