@@ -44,7 +44,7 @@ def identify(cf):
 
     if const:
         # We've found the block superclass, all done.
-        return ("block.superclass", cf.this)
+        return ("block.superclass", cf._this)
 
     # Next up, see if we've got the packet superclass in the same way.
     const = cf.constants.find_one(
@@ -54,7 +54,7 @@ def identify(cf):
 
     if const:
         # We've found the packet superclass.
-        return ("packet.superclass", cf.this)
+        return ("packet.superclass", cf._this)
 
     # The main recipe superclass.
     const = cf.constants.find_one(
@@ -63,7 +63,7 @@ def identify(cf):
     )
 
     if const:
-        return ("recipe.superclass", cf.this)
+        return ("recipe.superclass", cf._this)
 
     # Item superclass
     const = cf.constants.find_one(
@@ -73,7 +73,7 @@ def identify(cf):
     )
 
     if const:
-        return ("item.superclass", cf.this)
+        return ("item.superclass", cf._this)
 
     # Entity list
     const = cf.constants.find_one(
@@ -82,7 +82,7 @@ def identify(cf):
     )
 
     if const:
-        return ("entity.list", cf.this)
+        return ("entity.list", cf._this)
 
     # Protocol version (Client)
     const = cf.constants.find_one(
@@ -91,7 +91,7 @@ def identify(cf):
     )
 
     if const:
-        return ("nethandler.client", cf.this)
+        return ("nethandler.client", cf._this)
 
     # Protocol version (Server)
     const = cf.constants.find_one(
@@ -100,7 +100,7 @@ def identify(cf):
     )
 
     if const:
-        return ("nethandler.server", cf.this)
+        return ("nethandler.server", cf._this)
 
     # Biome
     const = cf.constants.find_one(
@@ -109,7 +109,7 @@ def identify(cf):
     )
 
     if const:
-        return ("biome.superclass", cf.this)
+        return ("biome.superclass", cf._this)
 
 
 class IdentifyTopping(Topping):
