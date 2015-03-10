@@ -229,7 +229,7 @@ if __name__ == "__main__":
             "source": {
                 "file": path,
                 "classes": jar.class_count,
-                #"other": jar.count, # TODO: Solum v2 doesn't have this?
+                "other": jar.count,
                 "size": os.path.getsize(path)
             }
         }
