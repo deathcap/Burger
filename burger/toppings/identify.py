@@ -132,7 +132,9 @@ class IdentifyTopping(Topping):
     @staticmethod
     def act(aggregate, jar, verbose=False):
         classes = aggregate.setdefault("classes", {})
-        for cf in jar.classes:
+        for filename in jar._files:
+            if not filename.endswith('.class'): continue
+            cf = jar.open_class(filename)
             result = identify(cf)
             if result:
                 classes[result[0]] = result[1]
