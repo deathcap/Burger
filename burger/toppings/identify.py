@@ -26,7 +26,7 @@ from solum import ClassFile, ConstantType
 from .topping import Topping
 
 
-def identify(cf):
+def identify(cf, filename):
     """
     The first pass across the JAR will identify all possible classes it
     can, maping them by the 'type' it implements.
@@ -44,7 +44,7 @@ def identify(cf):
 
     if const:
         # We've found the block superclass, all done.
-        return ("block.superclass", cf._this)
+        return ("block.superclass", filename)
 
     # Next up, see if we've got the packet superclass in the same way.
     const = cf.constants.find_one(
@@ -54,7 +54,7 @@ def identify(cf):
 
     if const:
         # We've found the packet superclass.
-        return ("packet.superclass", cf._this)
+        return ("packet.superclass", filename)
 
     # The main recipe superclass.
     const = cf.constants.find_one(
@@ -63,7 +63,7 @@ def identify(cf):
     )
 
     if const:
-        return ("recipe.superclass", cf._this)
+        return ("recipe.superclass", filename)
 
     # Item superclass
     const = cf.constants.find_one(
@@ -73,7 +73,7 @@ def identify(cf):
     )
 
     if const:
-        return ("item.superclass", cf._this)
+        return ("item.superclass", filename)
 
     # Entity list
     const = cf.constants.find_one(
@@ -82,7 +82,7 @@ def identify(cf):
     )
 
     if const:
-        return ("entity.list", cf._this)
+        return ("entity.list", filename)
 
     # Protocol version (Client)
     const = cf.constants.find_one(
@@ -91,7 +91,7 @@ def identify(cf):
     )
 
     if const:
-        return ("nethandler.client", cf._this)
+        return ("nethandler.client", filename)
 
     # Protocol version (Server)
     const = cf.constants.find_one(
@@ -100,7 +100,7 @@ def identify(cf):
     )
 
     if const:
-        return ("nethandler.server", cf._this)
+        return ("nethandler.server", filename)
 
     # Biome
     const = cf.constants.find_one(
@@ -109,7 +109,7 @@ def identify(cf):
     )
 
     if const:
-        return ("biome.superclass", cf._this)
+        return ("biome.superclass", filename)
 
 
 class IdentifyTopping(Topping):
@@ -135,7 +135,7 @@ class IdentifyTopping(Topping):
         for filename in jar._files:
             if not filename.endswith('.class'): continue
             cf = jar.open_class(filename)
-            result = identify(cf)
+            result = identify(cf, filename)
             if result:
                 classes[result[0]] = result[1]
                 if len(classes) == 8:
