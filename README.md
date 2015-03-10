@@ -10,6 +10,13 @@ a few specifically. Each topping is then aggregated by
 `munch.py` into the whole and output as a JSON dictionary.
 
 ## Usage
+Install [Solum](https://github.com/sadimusi/Solum):
+
+    git clone https://github.com/deathcap/Solum
+    cd Solum
+    git checkout update
+    sudo python setup.py install
+
 The simplest way to use Burger is to pass the `-d` or `--download`
 flag, which will download the minecraft client for you.
 

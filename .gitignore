@@ -1,7 +1,4 @@
-*.pyc
-*.class
-*.jar
 *.swp
-test.py
-build/
-test/
+*.jar
+*.class
+*.pyc
