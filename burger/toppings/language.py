@@ -39,19 +39,7 @@ class LanguageTopping(Topping):
         LanguageTopping.load_language(
             aggregate,
             jar,
-            "lang/stats_US.lang",
-            verbose
-        )
-        LanguageTopping.load_language(
-            aggregate,
-            jar,
             "lang/en_US.lang",
-            verbose
-        )
-        LanguageTopping.load_language(
-            aggregate,
-            jar,
-            "assets/minecraft/lang/en_US.lang",
             verbose
         )
 
