@@ -28,7 +28,7 @@ from types import LambdaType
 
 from solum import ClassFile, JarFile
 from solum.descriptor import method_descriptor, field_descriptor
-from solum.classfile.constants import ConstantType
+from solum.core.constants import ConstantType
 
 from .topping import Topping
 
